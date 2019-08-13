@@ -1,0 +1,88 @@
+#include <iostream>
+#include<stdio.h>
+using namespace std;
+int main()
+{
+    int n;
+    cin>>n;
+    for(int ii = 1; ii <= n; ii++)
+    {
+        getchar();
+        int a[10];
+        for(int i = 0; i <= 9; i++)
+            a[i] = -100;
+        char b[10] = {0};
+        for(int i = 0; i <= 6; i++)
+        {
+            char t;
+            scanf("%c",&t);
+            if(i%2==0)
+                a[i]=(t-'0');
+            else
+                b[i] = t;
+        }
+
+        for(int i = 0; i <= 6; i++)
+        {
+            if(b[i]=='x')
+            {
+                a[i] = a[i-1] * a[i+1];
+            }
+            for(int k = 0; a[k+i]!=-100; k++)
+            {
+                a[k+i] = a[i];
+            }
+            for(int k = 0; a[k+i]!=-100 && (k+i)>=0; k--)
+            {
+                a[k+i] = a[i];
+            }
+
+
+            if(b[i]=='/')
+            {
+                a[i] = a[i-1] / a[i+1];
+            }
+            for(int k = 0; a[k+i]!=-100; k++)
+            {
+                a[k+i] = a[i];
+            }
+            for(int k = 0; a[k+i]!=-100&& (k+i)>=0; k--)
+            {
+                a[k+i] = a[i];
+            }
+        }
+
+        for(int i = 0; i <= 6; i++)
+        {
+            if(b[i]=='+')
+            {
+                a[i] = a[i-1] + a[i+1];
+            }
+            for(int k = 0; a[k+i]!=-100; k++)
+            {
+                a[k+i] = a[i];
+            }
+            for(int k = 0; a[k+i]!=-100&& (k+i)>=0; k--)
+            {
+                a[k+i] = a[i];
+            }
+
+
+            if(b[i]=='-')
+            {
+                a[i] = a[i-1] - a[i+1];
+            }
+            for(int k = 0; a[k+i]!=-100; k++)
+            {
+                a[k+i] = a[i];
+            }
+            for(int k = 0; a[k+i]!=-100&& (k+i)>=0; k--)
+            {
+                a[k+i] = a[i];
+            }
+        }
+        if(a[1] == 24)printf("Yes\n");
+        else printf("No\n");
+    }
+    return 0;
+}
