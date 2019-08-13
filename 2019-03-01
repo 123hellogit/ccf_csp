@@ -1,0 +1,51 @@
+#include <iostream>
+#include <stdio.h>
+using namespace std;
+
+int main()
+{
+    int n;
+    cin>>n;
+    int maxn,minn;
+    if(n % 2 == 0)
+    {
+        int midn = 0.0;
+        for(int i = 1;i <= n;i++)
+        {
+            int t;  cin>>t;
+            if(i == 1)maxn = t;
+            if(i == n)minn = t;
+            if(i == n/2 || i == n/2+1)
+            {
+                midn += t;
+            }
+        }
+         if(maxn < minn)swap(maxn,minn);
+         if(midn%2 == 0)
+         {
+             printf("%d %d %d\n",maxn,midn/2,minn);
+         }
+         else
+         {
+             printf("%d %.1f %d\n",maxn,(midn)/2.0,minn);
+         }
+
+    }
+
+    else if(n % 2 == 1)
+    {
+        int midn = 0;
+        for(int i = 1;i <= n;i++)
+        {
+            int t;  cin>>t;
+            if(i == 1)maxn = t;
+            if(i == n)minn = t;
+            if(i == n/2+1)midn = t;
+        }
+        if(maxn < minn)swap(maxn,minn);
+        cout<<maxn<<" "<<midn<<" "<<minn<<endl;
+
+    }
+    return 0;
+}
+
